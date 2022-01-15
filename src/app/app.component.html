@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="text-center" id="title"><b>Phone Numbers</b></h1>
+  <div class="row" id="filters">
+    <div class="col-md-6 col-sm-12">
+      <ng-select [items]="countries"
+                 placeholder="Select Country..."
+                 bindValue="name"
+                 bindLabel="name"
+                 (change)="getCustomers()"
+                 [(ngModel)]="countryName">
+      </ng-select>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <ng-select [disabled]="!countryName" [items]="states"
+                 bindLabel="label"
+                 bindValue="value"
+                 placeholder="Select State..."
+                 (change)="getCustomers()"
+                 [(ngModel)]="state">
+      </ng-select>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <td><b>Country</b></td>
+      <td><b>State</b></td>
+      <td><b>Country Code</b></td>
+      <td><b>Phone Number</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{customer.country}}</td>
+      <td>{{customer.state}}</td>
+      <td>{{customer.code}}</td>
+      <td>{{customer.phone}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
